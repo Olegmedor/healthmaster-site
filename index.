@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HealthMaster</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background: #f7f7f7;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 760px;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 20px;
+            margin-bottom: 18px;
+        }
+        footer {
+            margin-top: 40px;
+            font-size: 15px;
+            color: #999;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HealthMaster</h1>
+
+        <p>
+            We help people improve their health and daily well-being through simple,
+            effective habits. Better energy, better sleep, better mood — one small
+            step at a time.
+        </p>
+
+        <p>
+            Our goal is to make people feel lighter, calmer, more balanced,
+            and as a natural result — happier.
+        </p>
+
+        <p>
+            No pressure, no complications. Just clarity, care, and tools that help you
+            feel better every day.
+        </p>
+
+        <footer>
+            We do not collect or store any personal data.
+        </footer>
+    </div>
+</body>
+</html>
