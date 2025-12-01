@@ -1,0 +1,532 @@
+Oleg Krutko, [01.12.2025 20:12]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HealthMaster – Contact & Beta Access</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card-bg: #141a2e;
+      --accent: #48cfae;
+      --accent-soft: rgba(72, 207, 174, 0.12);
+      --text-main: #f5f7ff;
+      --text-muted: #a3abc7;
+      --border-subtle: #252c45;
+      --danger: #ff6b6b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #182341 0, #050712 55%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 32px 16px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 960px;
+      background: linear-gradient(135deg, rgba(72, 207, 174, 0.12), transparent),
+        var(--card-bg);
+      border-radius: 24px;
+      padding: 28px 24px 32px;
+      border: 1px solid rgba(142, 160, 255, 0.18);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
+    }
+
+    @media (min-width: 768px) {
+      .page {
+        padding: 32px 32px 36px;
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 2fr) minmax(0, 2fr);
+        gap: 28px;
+        align-items: flex-start;
+      }
+    }
+
+    h1 {
+      font-size: 28px;
+      margin: 0 0 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .tagline {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 20px;
+      max-width: 520px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(72, 207, 174, 0.5);
+      background: rgba(6, 255, 167, 0.04);
+      color: var(--accent);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 10px;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(72, 207, 174, 0.9);
+    }
+
+    .section-title {
+      font-size: 16px;
+      margin: 22px 0 8px;
+    }
+
+    .section-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0 0 8px;
+    }
+
+    .section-text strong {
+      color: var(--text-main);
+    }
+
+    .card {
+      border-radius: 18px;
+      border: 1px solid var(--border-subtle);
+      padding: 16px 14px 14px;
+      background: rgba(7, 10, 26, 0.85);
+      margin-top: 10px;
+    }
+
+    .card-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin: 0 0 10px;
+    }
+
+    .bank-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 4px 18px;
+      font-size: 13px;
+    }
+
+    @media (min-width: 640px) {
+      .bank-grid {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 2fr);
+      }
+    }
+
+    .label {
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .value {
+      color: var(--text-main);
+      word-break: break-all;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px dashed rgba(115, 130, 190, 0.35);
+      margin: 14px 0;
+    }
+
+    /* Form */
+
+    form {
+      margin-top: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    label {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+      background: rgba(6, 10, 32, 0.9);
+      border-radius: 11px;
+      border: 1px solid var(--border-subtle);
+      padding: 9px 11px;
+      color: var(--text-main);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease,
+        background 0.18s ease;
+    }
+
+Oleg Krutko, [01.12.2025 20:12]
+input::placeholder,
+    textarea::placeholder {
+      color: rgba(163, 171, 199, 0.65);
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(72, 207, 174, 0.5);
+      background: rgba(6, 10, 32, 0.98);
+    }
+
+    textarea {
+      min-height: 70px;
+      resize: vertical;
+    }
+
+    .choices {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .choice-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(163, 171, 199, 0.5);
+      background: rgba(9, 14, 40, 0.85);
+      font-size: 12px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: border-color 0.18s ease, background 0.18s ease,
+        color 0.18s ease;
+    }
+
+    .choice-pill input {
+      accent-color: var(--accent);
+    }
+
+    .choice-pill:hover {
+      border-color: var(--accent);
+      background: rgba(72, 207, 174, 0.06);
+      color: var(--text-main);
+    }
+
+    .helper-text {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .submit-row {
+      margin-top: 4px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    button[type="submit"] {
+      border: none;
+      border-radius: 999px;
+      padding: 9px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--accent), #4fe7c1);
+      color: #020410;
+      box-shadow: 0 12px 28px rgba(15, 255, 189, 0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        filter 0.15s ease;
+    }
+
+    button[type="submit"]:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(15, 255, 189, 0.45);
+      filter: brightness(1.03);
+    }
+
+    button[type="submit"]:active {
+      transform: translateY(0);
+      box-shadow: 0 8px 20px rgba(15, 255, 189, 0.3);
+      filter: brightness(0.98);
+    }
+
+    .submit-caption {
+      font-size: 11px;
+      color: var(--text-muted);
+      max-width: 260px;
+    }
+
+    .inline-icon {
+      font-size: 16px;
+    }
+
+    /* Footer small print */
+    .footer-note {
+      margin-top: 18px;
+      font-size: 11px;
+      color: var(--text-muted);
+      border-radius: 10px;
+      padding: 8px 10px;
+      background: rgba(7, 11, 32, 0.9);
+      border: 1px dashed rgba(100, 114, 185, 0.55);
+    }
+
+    .footer-note strong {
+      color: var(--text-main);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div class="pill">
+        <span class="pill-dot"></span>
+        <span>HealthMaster Beta</span>
+      </div>
+      <h1>Contact & Beta Access</h1>
+      <p class="tagline">
+        HealthMaster — это экспериментальный проект, который помогает людям
+        чувствовать себя лучше каждый день: больше энергии, качественный сон,
+        спокойная голова и здоровые привычки. Если вы хотите протестировать
+        раннюю версию или работать с нами над продуктом — оставьте заявку ниже.
+      </p>
+    </header>
+
+    <section class="layout">
+      <!-- LEFT: CONTACT / FORM -->
+      <section aria-labelledby="contact-form-title">
+        <h2 id="contact-form-title" class="section-title">
+          Beta access & collaboration
+        </h2>
+        <p class="section-text">
+          If you’re interested in the <strong>beta version</strong> of
+          HealthMaster, leave a request — we’ll reach out with details and help
+          you connect. We’re also open to collaborating with
+          <strong>developers and product people</strong> who want to build tools
+          for better health, sleep and daily balance.
+        </p>
+
+Oleg Krutko, [01.12.2025 20:12]
+<form
+          name="beta-signup"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+        >
+          <!-- Netlify service fields -->
+          <input type="hidden" name="form-name" value="beta-signup" />
+          <p style="display:none;">
+            <label>
+              Don’t fill this out:
+              <input name="bot-field" />
+            </label>
+          </p>
+
+          <div class="field-group">
+            <label for="name">
+              Your name / Имя<span class="inline-icon">*</span>
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Alex, Maria…"
+            />
+          </div>
+
+          <div class="field-group">
+            <label for="contact">
+              WhatsApp or Telegram contact / WA или TG<span
+                class="inline-icon"
+                >*</span
+              >
+            </label>
+            <input
+              type="text"
+              id="contact"
+              name="messenger_contact"
+              required
+              placeholder="@username or +1 234 567 89"
+            />
+          </div>
+
+          <div class="field-group">
+            <label for="email">
+              Email (optional)
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="you@example.com"
+            />
+          </div>
+
+          <div class="field-group">
+            <label>
+              What describes you best? / Что вам ближе?
+            </label>
+            <div class="choices">
+              <label class="choice-pill">
+                <input
+                  type="checkbox"
+                  name="goal_feel_better"
+                  value="yes"
+                />
+                <span>Хочу лучше себя чувствовать</span>
+              </label>
+
+              <label class="choice-pill">
+                <input
+                  type="checkbox"
+                  name="goal_join_team"
+                  value="yes"
+                />
+                <span>Хочу работать в команде</span>
+              </label>
+            </div>
+            <p class="helper-text">
+              Можно выбрать оба варианта.
+            </p>
+          </div>
+
+          <div class="field-group">
+            <label for="message">
+              Short note (optional) / Пара слов о вас
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Напишите, чем вы занимаетесь и как HealthMaster может быть полезен."
+            ></textarea>
+          </div>
+
+          <div class="submit-row">
+            <button type="submit">
+              <span class="inline-icon">✨</span>
+              <span>Send request</span>
+            </button>
+            <p class="submit-caption">
+              We will contact you personally about beta access or collaboration.
+              No spam, only relevant messages.
+            </p>
+          </div>
+        </form>
+      </section>
+
+      <!-- RIGHT: BANK DETAILS / INFO -->
+      <aside aria-labelledby="bank-details-title">
+        <h2 id="bank-details-title" class="section-title">
+          Bank details for transfers
+        </h2>
+        <p class="section-text">
+          If you need to support the project or arrange a contract-based
+          collaboration via bank transfer, here are our current details:
+        </p>
+
+        <div class="card">
+          <h3 class="card-title">Beneficiary details</h3>
+          <div class="bank-grid">
+            <div class="label">Beneficiary:</div>
+            <div class="value">LLC &quot;IDEA&quot;</div>
+
+            <div class="label">Beneficiary’s account:</div>
+            <div class="value">1033020060307978</div>
+
+            <div class="label">INN (beneficiary):</div>
+            <div class="value">02803202210299</div>
+
+            <div class="label">Account currency:</div>
+            <div class="value">USD</div>
+          </div>
+
+Oleg Krutko, [01.12.2025 20:12]
+<hr />
+
+          <h3 class="card-title">Beneficiary’s bank</h3>
+          <div class="bank-grid">
+            <div class="label">Bank name:</div>
+            <div class="value">OJSC &laquo;Mbank&raquo;</div>
+
+            <div class="label">Bank INN:</div>
+            <div class="value">02712199110068</div>
+
+            <div class="label">SWIFT:</div>
+            <div class="value">KYRSKG22</div>
+
+            <div class="label">BIC:</div>
+            <div class="value">103030</div>
+          </div>
+        </div>
+
+        <h3 class="section-title">Direct contact</h3>
+        <p class="section-text">
+          For partnership, integration or legal questions you can also contact us
+          directly:
+        </p>
+        <div class="card">
+          <p class="section-text" style="margin-bottom: 4px;">
+            Email: <a href="mailto:support@healthmaster.app"
+              >support@healthmaster.app</a
+            >
+          </p>
+          <p class="section-text">
+            Telegram (preferred): <strong>@healthmaster_app</strong>
+          </p>
+        </div>
+
+        <div class="footer-note">
+          <strong>Privacy & data use:</strong> we don’t collect or store any
+          health metrics, sleep data or sensitive information on our servers.
+          The form above only sends the contact details you choose to share
+          (name, messenger, email, note) and we use them solely to reach out
+          regarding beta access or collaboration. No analytics, no resale, no
+          ads based on your data.
+        </div>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>
